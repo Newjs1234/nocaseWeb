@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Never End Game</title>
+    <title>NOCASE</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -13,10 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <h1>Home</h1>
-                    </li>
+                <ul class="nav" style="margin: 20px 0;">
                     <li class="nav-item">
                         <form action="/logout" method="POST">
                             <input  class="btn btn-primary" type="submit" value="Logout">
@@ -24,36 +21,42 @@
                     </li>
                   </ul>
             </div>
-            <div class="w-100"></div>
+            <div class="w-100" style="margin-top: 20px;"></div>
             <div class="col">
-                <h3>Willkomen <%= username %></h3>
-                <form action="/" method="POST" enctype="multipart/form-data">
+                <h3>Willkommen <%= username %></h3>
+                <h4>E-Mail: <%= email %></h4>
+                <form style="margin: 40px auto;" action="/" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Example file input</label>
+                        <label for="exampleFormControlFile1">Datei hochladen</label>
                         <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                        <label for="exampleFormControlTextarea1">Nachricht:</label>
                         <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Senden" />
+                    <input class="btn btn-primary" type="submit" value="Hochladen" />
                 </form>
             </div>
             <div class="w-100"></div>
             <div class="col">
+                <h3 style="margin: 20px 0;">Hochgeladene Dateien</h3>
                 <% filme.forEach(function(film) { %>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 18rem; margin: 30px 0;">
                         <div class="card-body">
                           <h5 class="card-title"><%= film.name %></h5>
                           <h6 class="card-subtitle mb-2 text-muted"><%= film.username %></h6>
                           <p class="card-text"><%= film.content %></p>
                           <form action="/down" method="POST">
-                            <input style="display: none;" type="text" value="<%= film.name %>" name="name">
+                            <input style="display: none;" type="text" value="<%= film.username %>/<%= film.name %>" name="name">
                             <input class="btn btn-primary" type="submit" value="Downloade">
                           </form>
                         </div>
                       </div>
                 <% }); %>
+            </div>
+            <div class="w-100" style="margin-top: 50px; border-top: 1px solid black;"></div>
+            <div class="col">
+                <p><a href="/new-customers">New Customers</a></p>
             </div>
         </div>
     </div>

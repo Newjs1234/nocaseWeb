@@ -14,7 +14,6 @@ const TWO_HOURS = 1000 * 60 * 60 * 2;
 
 const {
     NODE_ENV = 'development',
-
     SESS_NAME = 'sid',
     SESS_SECRET = 'ssh!quiet,it\'asecret',
     SESS_LIFETIME = TWO_HOURS
@@ -46,6 +45,6 @@ app.use('/', routerFilm);
 
 const server = http.createServer(app);
 
-server.listen(3000, () => {
-    console.log('Server port 3000');
+server.listen(80, () => {
+    console.log('Server port 80');
 });
